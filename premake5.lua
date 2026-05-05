@@ -1,0 +1,104 @@
+workspace "Orgeng"
+    architecture "x64"
+    startproject "Sandbox"
+    configurations
+    {
+        "Debug",
+        "Release",
+        "Dist"
+    }
+
+outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+project "Orgeng"
+    location "Orgeng"
+    kind "SharedLib"
+    language "C++"
+
+    targetdir ("bin/" .. outputdir .. "/Orgeng")
+    objdir ("bin-int/" .. outputdir .. "/Orgeng")
+
+        files
+        {
+            "src/Orgeng/**",
+        }
+
+    includedirs
+    {
+        "Orgeng/vendor/spdlog/include",
+        "C:/Orgeng/src",
+        "C:/Orgeng/src/Orgeng"
+    }
+
+    filter "system:windows"
+        cppdialect "C++17"
+        staticruntime "On"
+        systemversion "latest"
+        defines
+        {
+            "OG_PLATFORM_WINDOWS",
+            "OG_BUILD_DLL"
+        }
+        postbuildcommands
+        {
+            ("{MKDIR} ../bin/" .. outputdir .. "/SandBox"),
+            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/SandBox")
+        }
+
+    filter "configurations:Debug"
+        defines "OG_DEBUG"
+        symbols "On"
+
+    filter "configurations:Release"
+        defines "OG_RELEASE"
+        optimize "On"
+
+    filter "configurations:Dist"
+        defines "OG_DIST"
+        optimize "On"
+
+project "Sandbox"
+    location "SandBox"
+    kind "ConsoleApp"
+    language "C++"
+
+    targetdir ("bin/" .. outputdir .. "/Sandbox")
+    objdir ("bin-int/" .. outputdir .. "/Sandbox")
+
+    files
+    {
+        "../SandBox/src/**.h",
+        "../SandBox/src/**.cpp"
+    }
+
+    includedirs
+    {
+        "Orgeng/vendor/spdlog/include",
+        "src"
+    }
+
+    links
+    {
+        "Orgeng"
+    }
+
+    filter "system:windows"
+        cppdialect "C++17"
+        staticruntime "On"
+        systemversion "latest"
+        defines
+        {
+            "OG_PLATFORM_WINDOWS"
+        }
+
+    filter "configurations:Debug"
+        defines "OG_DEBUG"
+        symbols "On"
+
+    filter "configurations:Release"
+        defines "OG_RELEASE"
+        optimize "On"
+
+    filter "configurations:Dist"
+        defines "OG_DIST"
+        optimize "On"
