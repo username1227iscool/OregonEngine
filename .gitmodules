@@ -1,3 +1,6 @@
 [submodule "Orgen/vendor/spdlog"]
 	path = Orgen/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Orgeng/vendor/GLFW"]
+	path = Orgeng/vendor/GLFW
+	url = https://github.com/TheCherno/glfw
