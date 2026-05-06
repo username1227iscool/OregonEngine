@@ -2,3 +2,7 @@ build/
 bin/ 
 *.exe 
 *.obj 
+.vs/ 
+bin/ 
+bin-int/ 
+*.user 

@@ -1,9 +1,10 @@
+#include "ogpch.h"
 #pragma once
 
 #include "Events/Events.h"
 #include "Core/MouseCodes.h"
 
-#include <sstream>
+
 
 namespace Orgeng {
 	class ORGENG_API MouseMovedEvent : public Event

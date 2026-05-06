@@ -1,8 +1,10 @@
+#include "ogpch.h"
+
 #pragma once
 
 #include "Orgeng/Events/Events.h"
 
-#include <sstream>
+
 
 namespace Orgeng {
 

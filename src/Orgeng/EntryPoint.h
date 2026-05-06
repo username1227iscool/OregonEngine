@@ -1,3 +1,5 @@
+#include "ogpch.h"
+
 #pragma once
 #include "Log.h"
 

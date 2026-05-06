@@ -1,8 +1,8 @@
+#include "ogpch.h"
+
 #pragma once
 #include "Orgeng/Core.h"
 
-#include <string>
-#include <functional>
 
 namespace Orgeng {
 
@@ -12,7 +12,7 @@ namespace Orgeng {
 	// bus and process them during the "event" part of the update stage.
 
 	enum class EventType
-	{
+	{	
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
@@ -83,3 +83,11 @@ namespace Orgeng {
 	}
 
 }
+template<typename T>
+struct fmt::formatter<T, std::enable_if_t<std::is_base_of_v<Orgeng::Event, T>, char>> : fmt::formatter<std::string>
+{
+	auto format(const Orgeng::Event& e, fmt::format_context& ctx) const
+	{
+		return fmt::formatter<std::string>::format(e.ToString(), ctx);
+	}
+};

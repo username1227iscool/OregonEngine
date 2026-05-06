@@ -1,9 +1,10 @@
+#include "ogpch.h"
 #pragma once
 
 #include "Events/Events.h"
 #include "Core/KeyCodes.h"
 
-#include <sstream>
+
 
 namespace Orgeng {
 		
@@ -42,7 +43,7 @@ namespace Orgeng {
 
 	class KeyReleasedEvent : public KeyEvent {
 	public:
-		KeyReleasedEvent(int keycode, int repeatCount)
+		KeyReleasedEvent(int keycode)
 			: KeyEvent(keycode) {}
 
 		std::string ToString() const override

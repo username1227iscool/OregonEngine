@@ -10,6 +10,11 @@ workspace "Orgeng"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Orgeng/vendor/GLFW/include"
+
+include "Orgeng/vendor/GLFW"
+
 project "Orgeng"
     location "Orgeng"
     kind "SharedLib"
@@ -17,6 +22,9 @@ project "Orgeng"
 
     targetdir ("bin/" .. outputdir .. "/Orgeng")
     objdir ("bin-int/" .. outputdir .. "/Orgeng")
+
+     pchheader "ogpch.h"
+    pchsource "src/Orgeng/ogpch.cpp"
 
         files
         {
@@ -27,12 +35,22 @@ project "Orgeng"
     {
         "Orgeng/vendor/spdlog/include",
         "C:/Orgeng/src",
-        "C:/Orgeng/src/Orgeng"
+        "C:/Orgeng/src/Orgeng",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32",
+        "gdi32",
+        "user32",
+        "shell32"
     }
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
+        staticruntime "Off"
         systemversion "latest"
         defines
         {
