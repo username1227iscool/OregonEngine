@@ -12,8 +12,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Orgeng/vendor/GLFW/include"
+IncludeDir["Glad"] = "Orgeng/vendor/Glad/include"
 
 include "Orgeng/vendor/GLFW"
+include "Orgeng/vendor/Glad"
 
 project "Orgeng"
     location "Orgeng"
@@ -36,12 +38,14 @@ project "Orgeng"
         "Orgeng/vendor/spdlog/include",
         "C:/Orgeng/src",
         "C:/Orgeng/src/Orgeng",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links
     {
         "GLFW",
+        "Glad",
         "opengl32",
         "gdi32",
         "user32",
@@ -55,7 +59,8 @@ project "Orgeng"
         defines
         {
             "OG_PLATFORM_WINDOWS",
-            "OG_BUILD_DLL"
+            "OG_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
         postbuildcommands
         {

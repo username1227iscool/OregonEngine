@@ -2,6 +2,7 @@
 
 #include "Application.h"
 
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -26,9 +27,7 @@ namespace Orgeng {
 	void Application::OnEvent(Event& e) {
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClosed));
-
-		OG_CORE_TRACE("{0}",e);
-
+	
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
 			(*--it)->OnEvent(e);
 			if (e.Handled)
