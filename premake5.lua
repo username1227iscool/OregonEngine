@@ -13,9 +13,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Orgeng/vendor/GLFW/include"
 IncludeDir["Glad"] = "Orgeng/vendor/Glad/include"
+IncludeDir["ImGui"] = "Orgeng/vendor/imgui"
 
 include "Orgeng/vendor/GLFW"
 include "Orgeng/vendor/Glad"
+include "Orgeng/vendor/ImGui"
 
 project "Orgeng"
     location "Orgeng"
@@ -39,13 +41,15 @@ project "Orgeng"
         "C:/Orgeng/src",
         "C:/Orgeng/src/Orgeng",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.Glad}"
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.ImGui}"
     }
 
     links
     {
         "GLFW",
         "Glad",
+        "ImGui",
         "opengl32",
         "gdi32",
         "user32",

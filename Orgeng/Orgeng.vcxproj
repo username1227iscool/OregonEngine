@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>ogpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OG_PLATFORM_WINDOWS;OG_BUILD_DLL;GLFW_INCLUDE_NONE;OG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;..\src;..\src\Orgeng;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;..\src;..\src\Orgeng;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -107,7 +107,7 @@ IF EXIST ..\bin\Debug-windows-x86_64\Orgeng\Orgeng.dll\ (xcopy /Q /E /Y /I ..\bi
       <PrecompiledHeaderFile>ogpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OG_PLATFORM_WINDOWS;OG_BUILD_DLL;GLFW_INCLUDE_NONE;OG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;..\src;..\src\Orgeng;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;..\src;..\src\Orgeng;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -138,7 +138,7 @@ IF EXIST ..\bin\Release-windows-x86_64\Orgeng\Orgeng.dll\ (xcopy /Q /E /Y /I ..\
       <PrecompiledHeaderFile>ogpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>OG_PLATFORM_WINDOWS;OG_BUILD_DLL;GLFW_INCLUDE_NONE;OG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;..\src;..\src\Orgeng;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;..\src;..\src\Orgeng;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -173,6 +173,7 @@ IF EXIST ..\bin\Dist-windows-x86_64\Orgeng\Orgeng.dll\ (xcopy /Q /E /Y /I ..\bin
     <ClInclude Include="..\src\Orgeng\Events\Events.h" />
     <ClInclude Include="..\src\Orgeng\Events\KeyEvent.h" />
     <ClInclude Include="..\src\Orgeng\Events\MouseEvent.h" />
+    <ClInclude Include="..\src\Orgeng\ImGui\ImGuiLayer.h" />
     <ClInclude Include="..\src\Orgeng\Layer.h" />
     <ClInclude Include="..\src\Orgeng\LayerStack.h" />
     <ClInclude Include="..\src\Orgeng\Log.h" />
@@ -182,6 +183,7 @@ IF EXIST ..\bin\Dist-windows-x86_64\Orgeng\Orgeng.dll\ (xcopy /Q /E /Y /I ..\bin
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Orgeng\Application.cpp" />
+    <ClCompile Include="..\src\Orgeng\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="..\src\Orgeng\Layer.cpp" />
     <ClCompile Include="..\src\Orgeng\LayerStack.cpp" />
     <ClCompile Include="..\src\Orgeng\Log.cpp" />
@@ -196,6 +198,9 @@ IF EXIST ..\bin\Dist-windows-x86_64\Orgeng\Orgeng.dll\ (xcopy /Q /E /Y /I ..\bin
     </ProjectReference>
     <ProjectReference Include="vendor\Glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\ImGui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
