@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -113,6 +114,7 @@ IF EXIST ..\bin\Debug-windows-x86_64\Orgeng\Orgeng.dll\ (xcopy /Q /E /Y /I ..\bi
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -143,6 +145,7 @@ IF EXIST ..\bin\Release-windows-x86_64\Orgeng\Orgeng.dll\ (xcopy /Q /E /Y /I ..\
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -170,6 +173,8 @@ IF EXIST ..\bin\Dist-windows-x86_64\Orgeng\Orgeng.dll\ (xcopy /Q /E /Y /I ..\bin
     <ClInclude Include="..\src\Orgeng\Events\Events.h" />
     <ClInclude Include="..\src\Orgeng\Events\KeyEvent.h" />
     <ClInclude Include="..\src\Orgeng\Events\MouseEvent.h" />
+    <ClInclude Include="..\src\Orgeng\Layer.h" />
+    <ClInclude Include="..\src\Orgeng\LayerStack.h" />
     <ClInclude Include="..\src\Orgeng\Log.h" />
     <ClInclude Include="..\src\Orgeng\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="..\src\Orgeng\ogpch.h" />
@@ -177,6 +182,8 @@ IF EXIST ..\bin\Dist-windows-x86_64\Orgeng\Orgeng.dll\ (xcopy /Q /E /Y /I ..\bin
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Orgeng\Application.cpp" />
+    <ClCompile Include="..\src\Orgeng\Layer.cpp" />
+    <ClCompile Include="..\src\Orgeng\LayerStack.cpp" />
     <ClCompile Include="..\src\Orgeng\Log.cpp" />
     <ClCompile Include="..\src\Orgeng\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="..\src\Orgeng\ogpch.cpp">
